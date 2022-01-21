@@ -15,7 +15,7 @@ def save(subject, category, agency, update_date, content, url):
 def update_public(self):
     BASE_DIR = Path(__file__).resolve().parent.parent
     data = list()
-    f = open(str(BASE_DIR)+"\db\public-data.csv", 'r', encoding='utf-8-sig')
+    f = open(str(BASE_DIR)+"/db/public-data.csv", 'r', encoding='utf-8-sig')
     rea = csv.reader(f)
     for row in rea:
         data.append(row)
@@ -27,7 +27,7 @@ def update_public(self):
 def update_seoul(self):
     BASE_DIR = Path(__file__).resolve().parent.parent
     data = list()
-    f = open(str(BASE_DIR) + "\db\seoul-data.csv", 'r', encoding='utf-8-sig')
+    f = open(str(BASE_DIR) + "/db/seoul-data.csv", 'r', encoding='utf-8-sig')
     rea = csv.reader(f)
     for row in rea:
         data.append(row)
@@ -39,7 +39,7 @@ def update_seoul(self):
 def update_data(self):
     BASE_DIR = Path(__file__).resolve().parent.parent
     data = list()
-    f = open(str(BASE_DIR)+"\db\data.csv", 'r', encoding='cp949')
+    f = open(str(BASE_DIR)+"/db/data.csv", 'r', encoding='cp949')
     rea = csv.reader(f)
     for row in rea:
         data.append(row)
