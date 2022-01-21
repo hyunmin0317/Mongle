@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/hyunmin0317/Project-Study/master/mongta-map/static/icon.svg">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'pybo/style.css' %}">
+    <title>Mongta-Map</title>
+</head>
+<body>
+<!-- ------------------------------- [edit] -------------------------------- -->
+<!-- 네비게이션바 -->
+{% include "navbar.html" %}
+<!-- ----------------------------------------------------------------------- -->
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<!-- jQuery JS -->
+<script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
+</body>
+</html>
