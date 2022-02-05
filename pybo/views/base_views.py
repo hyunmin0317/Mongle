@@ -4,25 +4,38 @@ from django.db.models import Q, Count
 from ..models import Question
 import requests
 
-def elasticAPI():
-    URL = "http://3.39.23.241:9200/public_metadata/_search?size=100"
+def listAPI(url, n):
+    URL = "http://"+url+":9200/public_metadata/_search?size="+str(n)
     data = requests.get(URL).json()['hits']['hits']
     list = []
     for d in data:
-        list.append(d['_source'])
+        a = d['_source']
+        a['id'] = d['_id']
+        list.append(a)
     return list
 
+def detailAPI(url, id):
+    URL = "http://"+url+":9200/public_metadata/_doc/"+id
+    data = requests.get(URL).json()['_source']
+    return data
 
 def list(request):
     page = request.GET.get('page', '1')  # 페이지
 
-    data_list = elasticAPI()
+    data_list = listAPI("3.39.23.241", 10)
+
+    print(data_list)
 
     paginator = Paginator(data_list, 10)
     page_obj = paginator.get_page(page)
     context = {"data_list":page_obj}
 
     return render(request, 'pybo/list.html', context)
+
+def list_detail(request, id):
+    data = detailAPI("3.39.23.241", id)
+    context = {"data":data}
+    return render(request, 'pybo/detail.html', context)
 
 
 # pybo 목록 출력

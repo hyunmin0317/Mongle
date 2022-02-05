@@ -33,7 +33,7 @@
             </td>
 
             <td class="text-left">
-                <a href="">{{ data.Title }}</a>
+                <a href="{% url 'pybo:list_detail' data.id %}">{{ data.Title }}</a>
             </td>
             <td>{{ data.Category }}</td>
             <td>{{ data.Date }}</td>
