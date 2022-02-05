@@ -21,10 +21,7 @@ def detailAPI(url, id):
 
 def list(request):
     page = request.GET.get('page', '1')  # 페이지
-
-    data_list = listAPI("3.39.23.241", 10)
-
-    print(data_list)
+    data_list = listAPI("3.39.23.241", 10000)
 
     paginator = Paginator(data_list, 10)
     page_obj = paginator.get_page(page)
