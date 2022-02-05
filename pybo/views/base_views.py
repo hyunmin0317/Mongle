@@ -2,6 +2,28 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Count
 from ..models import Question
+import requests
+
+def elasticAPI():
+    URL = "http://3.39.23.241:9200/public_metadata/_search?size=100"
+    data = requests.get(URL).json()['hits']['hits']
+    list = []
+    for d in data:
+        list.append(d['_source'])
+    return list
+
+
+def list(request):
+    page = request.GET.get('page', '1')  # 페이지
+
+    data_list = elasticAPI()
+
+    paginator = Paginator(data_list, 10)
+    page_obj = paginator.get_page(page)
+    context = {"data_list":page_obj}
+
+    return render(request, 'pybo/list.html', context)
+
 
 # pybo 목록 출력
 def index(request):
