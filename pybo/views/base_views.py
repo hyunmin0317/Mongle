@@ -62,6 +62,15 @@ def list_detail(request, id):
     context = {"data":data}
     return render(request, 'pybo/detail.html', context)
 
+def seoul(request):
+    return render(request, 'pybo/seoul.html')
+
+def covid19(request):
+    URL = "http://"+url+":9200/covid19_logstash/_search?sort=date:desc"
+    data = requests.get(URL).json()['hits']['hits'][0]
+    date = data['_source']['date']
+    context = {"date":date}
+    return render(request, 'pybo/covid19.html', context)
 
 # pybo 목록 출력
 def index(request):

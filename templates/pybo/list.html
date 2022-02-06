@@ -95,7 +95,7 @@
     <!--  페이징처리 끝  -->
 </div>
 
-<form id="searchForm" method="get" action="{% url 'pybo:list' %}">
+<form id="searchForm" method="get" action="{% url 'home' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
     <input type="hidden" id="page" name="page" value="{{ page }}">
     <input type="hidden" id="so" name="so" value="{{ so }}">

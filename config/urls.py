@@ -4,7 +4,7 @@ from pybo.views import base_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', base_views.index, name='index'),
+    path('', base_views.list, name='home'),
     path('mongta/', include('pybo.urls')),
     path('common/', include('common.urls')),
 ]
