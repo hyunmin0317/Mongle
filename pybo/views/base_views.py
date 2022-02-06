@@ -6,8 +6,17 @@ import requests
 
 url = "15.164.94.101"
 
-def listAPI(n):
+def listAPI(n, so, kw):
     URL = "http://"+url+":9200/public_metadata/_search?size="+str(n)
+
+    if so == 'recent':
+        URL += '&sort=Date:desc'
+    else:
+        URL += '&sort=Title.keyword:desc'
+
+    if kw:
+        URL += ('&q='+kw)
+
     data = requests.get(URL).json()['hits']['hits']
     list = []
     for d in data:
@@ -34,15 +43,17 @@ def searchAPI(query):
 def list(request):
     page = request.GET.get('page', '1')  # 페이지
     kw = request.GET.get('kw', '')  # 검색어
-    data_list = listAPI(10000)
+    so = request.GET.get('so', 'recent')  # 정렬기준
+
+    data_list = listAPI(10000, so, kw)
 
     # 검색
-    if kw:
-        data_list = searchAPI(kw)
+    # if kw:
+    #     data_list = searchAPI(kw)
 
     paginator = Paginator(data_list, 10)
     page_obj = paginator.get_page(page)
-    context = {"data_list":page_obj, 'page': page, 'kw': kw}
+    context = {"data_list":page_obj, 'page': page, 'kw': kw, 'so': so}
 
     return render(request, 'pybo/list.html', context)
 
