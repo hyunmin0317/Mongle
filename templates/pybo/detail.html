@@ -11,16 +11,22 @@
     {% endfor %}
     </div>
     {% endif %}
-    <h2 class="border-bottom py-2">{{ question.subject }}</h2>
+    <h2 class="border-bottom py-2">{{ data.Title }}</h2>
 
     <div class="row my-3">
         <div class="col-11"> <!-- 질문영역 -->
             <div class="card">
                 <div class="card-body">
                     <div class="card-text"><h5><b>카테고리</b></h5>{{ data.Category|mark }}</div><br>
-                    <div class="card-text"><h5><b>기관</b></h5>{{ data.Department|mark }}</div><br>
+                    <div class="card-text"><h5><b>관리부서</b></h5>{{ data.Department|mark }}</div><br>
+                    <div class="card-text"><h5><b>수정</b></h5>{{ data.Date|mark }}</div><br>
                     <div class="card-text"><h5><b>업데이트 주기</b></h5>{{ data.Update|mark }}</div><br>
-                    <div class="card-text"><h5><b>바로가기 링크</b></h5><a href={{question.url}}>{{ data.URL|mark }}</a></div><br>
+                    <div class="card-text"><h5><b>바로가기 링크</b></h5><a href={{data.URL}}>{{ data.URL|mark }}</a></div><br>
+                    <div class="card-text"><h5><b>확장자</b></h5>{{ data.Format|mark }}</div><br>
+                    <div class="card-text"><h5><b>매체유형</b></h5>{{ data.Texture|mark }}</div><br>
+                    <div class="card-text"><h5><b>제공형태</b></h5>{{ data.DownloadLocation|mark }}</div><br>
+                    <div class="card-text"><h5><b>이용허락범위</b></h5>{{ data.Copyright|mark }}</div><br>
+                    <div class="card-text"><h5><b>가격</b></h5>{{ data.Price|mark }}</div><br>
                     <div class="card-text"><h5><b>설명</b></h5>{{ data.Column|mark }}</div><br>
 
                     <div class="d-flex justify-content-end">

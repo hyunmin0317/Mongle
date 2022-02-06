@@ -4,7 +4,9 @@ from django.db.models import Q, Count
 from ..models import Question
 import requests
 
-def listAPI(url, n):
+url = "15.164.94.101"
+
+def listAPI(n):
     URL = "http://"+url+":9200/public_metadata/_search?size="+str(n)
     data = requests.get(URL).json()['hits']['hits']
     list = []
@@ -14,23 +16,38 @@ def listAPI(url, n):
         list.append(a)
     return list
 
-def detailAPI(url, id):
+def detailAPI(id):
     URL = "http://"+url+":9200/public_metadata/_doc/"+id
     data = requests.get(URL).json()['_source']
     return data
 
+def searchAPI(query):
+    URL = "http://" + url + ":9200/public_metadata/_search?size=1000&q="+query
+    data = requests.get(URL).json()['hits']['hits']
+    list = []
+    for d in data:
+        a = d['_source']
+        a['id'] = d['_id']
+        list.append(a)
+    return list
+
 def list(request):
     page = request.GET.get('page', '1')  # 페이지
-    data_list = listAPI("3.39.23.241", 10000)
+    kw = request.GET.get('kw', '')  # 검색어
+    data_list = listAPI(10000)
+
+    # 검색
+    if kw:
+        data_list = searchAPI(kw)
 
     paginator = Paginator(data_list, 10)
     page_obj = paginator.get_page(page)
-    context = {"data_list":page_obj}
+    context = {"data_list":page_obj, 'page': page, 'kw': kw}
 
     return render(request, 'pybo/list.html', context)
 
 def list_detail(request, id):
-    data = detailAPI("3.39.23.241", id)
+    data = detailAPI(id)
     context = {"data":data}
     return render(request, 'pybo/detail.html', context)
 
