@@ -4,7 +4,7 @@ from django.db.models import Q, Count
 from ..models import Question
 import requests
 
-url = "3.39.22.230"
+url = "54.180.109.106"
 
 def listAPI(n, so, kw):
     URL = "http://"+url+":9200/public_metadata/_search?size="+str(n)
@@ -47,10 +47,6 @@ def list(request):
 
     data_list = listAPI(10000, so, kw)
 
-    # 검색
-    # if kw:
-    #     data_list = searchAPI(kw)
-
     paginator = Paginator(data_list, 10)
     page_obj = paginator.get_page(page)
     context = {"data_list":page_obj, 'page': page, 'kw': kw, 'so': so}
@@ -63,13 +59,14 @@ def list_detail(request, id):
     return render(request, 'pybo/detail.html', context)
 
 def seoul(request):
-    return render(request, 'pybo/seoul.html')
+    context = {"url":url}
+    return render(request, 'pybo/seoul.html', context)
 
 def covid19(request):
     URL = "http://"+url+":9200/covid19_logstash/_search?sort=date:desc"
     data = requests.get(URL).json()['hits']['hits'][0]
     date = data['_source']['date']
-    context = {"date":date}
+    context = {"date":date, "url":url}
     return render(request, 'pybo/covid19.html', context)
 
 # pybo 목록 출력
