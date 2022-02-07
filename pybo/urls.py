@@ -42,4 +42,5 @@ urlpatterns = [
     path('subway/', base_views.subway, name='subway'),
     path('seoul/', base_views.seoul, name='seoul'),
     path('covid19/', base_views.covid19, name='covid19'),
+    path('bike/', base_views.bike, name='bike'),
 ]

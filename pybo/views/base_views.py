@@ -12,7 +12,7 @@ def listAPI(n, so, kw):
     if so == 'recent':
         URL += '&sort=Date:desc'
     else:
-        URL += '&sort=Title.keyword:desc'
+        URL += '&sort=Category.keyword:asc'
 
     if kw:
         URL += ('&q='+kw)
@@ -65,6 +65,10 @@ def seoul(request):
 def subway(request):
     context = {"url":url}
     return render(request, 'pybo/subway.html', context)
+
+def bike(request):
+    context = {"url":url}
+    return render(request, 'pybo/bike.html', context)
 
 def covid19(request):
     URL = "http://"+url+":9200/covid19_logstash/_search?sort=date:desc"
