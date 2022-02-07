@@ -4,7 +4,7 @@ from django.db.models import Q, Count
 from ..models import Question
 import requests
 
-url = "54.180.109.106"
+url = "15.165.109.114"
 
 def listAPI(n, so, kw):
     URL = "http://"+url+":9200/public_metadata/_search?size="+str(n)
