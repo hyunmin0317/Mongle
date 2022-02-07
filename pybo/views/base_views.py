@@ -62,6 +62,10 @@ def seoul(request):
     context = {"url":url}
     return render(request, 'pybo/seoul.html', context)
 
+def subway(request):
+    context = {"url":url}
+    return render(request, 'pybo/subway.html', context)
+
 def covid19(request):
     URL = "http://"+url+":9200/covid19_logstash/_search?sort=date:desc"
     data = requests.get(URL).json()['hits']['hits'][0]
