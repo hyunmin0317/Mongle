@@ -9,6 +9,7 @@ urlpatterns = [
     path('<int:question_id>/', base_views.detail, name='detail'),
     path('list/', base_views.list, name='list'),
     path('list/<str:id>/', base_views.list_detail, name='list_detail'),
+    path('category/<str:category>/', base_views.category, name='category'),
 
     # question_views.py
     path('question/create/', question_views.question_create, name='question_create'),

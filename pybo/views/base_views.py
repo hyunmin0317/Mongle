@@ -67,6 +67,19 @@ def list_detail(request, id):
     context = {"data":data}
     return render(request, 'pybo/detail.html', context)
 
+def category(request, category):
+    page = request.GET.get('page', '1')  # 페이지
+    kw = "Category:" + category
+    so = request.GET.get('so', 'recent')  # 정렬기준
+
+    data_list = listAPI(10000, so, kw)
+
+    paginator = Paginator(data_list, 10)
+    page_obj = paginator.get_page(page)
+    context = {"data_list": page_obj, 'page': page, 'kw': kw, 'so': so}
+
+    return render(request, 'pybo/list.html', context)
+
 def seoul(request):
     context = {"url":url}
     return render(request, 'pybo/seoul.html', context)
