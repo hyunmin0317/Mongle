@@ -7,7 +7,12 @@ import requests
 url = "15.165.109.114"
 
 def home(request):
-    return render(request, "home.html")
+    page = request.GET.get('page', '1')  # 페이지
+    kw = request.GET.get('kw', '')  # 검색어
+    so = request.GET.get('so', 'recent')  # 정렬기준
+    context = {'page': page, 'kw': kw, 'so': so}
+
+    return render(request, "home.html", context)
 
 
 def listAPI(n, so, kw):

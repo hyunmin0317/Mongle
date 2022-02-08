@@ -1,6 +1,5 @@
 <!-- 네비게이션바 -->
 
-<div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <svg width="30" height="30" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -10,6 +9,7 @@
         </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{% url 'pybo:list' %}" class="nav-link px-2 link-dark">Data</a></li>
         <li><a href="{% url 'pybo:seoul' %}" class="nav-link px-2 link-dark">Seoul</a></li>
         <li><a href="{% url 'pybo:subway' %}" class="nav-link px-2 link-dark">Subway</a></li>
         <li><a href="{% url 'pybo:bike' %}" class="nav-link px-2 link-dark">Bike</a></li>
@@ -29,4 +29,3 @@
           {% endif %}
       </div>
     </header>
-</div>

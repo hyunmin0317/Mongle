@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class="container my-3">
-        <br>
-        <h2><b>서울시 지하철 시각화</b></h2>
-        <center>
-                <iframe src="http://{{url}}:5601/goto/b4d2c6d0-86f3-11ec-97be-d5fb61ab7ff7" height="660" width="100%"></iframe>
-        </center>
-</div>
+<br>
+<h2><b>서울시 지하철 시각화</b></h2>
+<center>
+        <iframe src="http://{{url}}:5601/goto/b4d2c6d0-86f3-11ec-97be-d5fb61ab7ff7" height="660" width="100%"></iframe>
+</center>
 
 {% endblock %}
