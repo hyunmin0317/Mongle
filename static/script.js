@@ -9,11 +9,11 @@ for (let i = 0; i < numBalls; i++) {
   ball.classList.add("ball");
   ball.style.background = colors[i];
   ball.style.left = `${Math.floor(Math.random() * 85)}vw`;
-  ball.style.top = `${Math.floor(Math.random() * 100)}vh`;
+  ball.style.top = `${Math.floor(Math.random() * 10)}vh`;
   ball.style.transform = `scale(${Math.random()})`;
   ball.style.width = `${Math.random()*20}em`;
   ball.style.height = ball.style.width;
-  
+
   balls.push(ball);
   document.body.append(ball);
 }

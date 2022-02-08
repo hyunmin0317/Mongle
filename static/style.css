@@ -6,7 +6,7 @@
   z-index: -10;
 }
 
-form{
+.form{
   background-color: #fff;
   max-width:65%;
   z-index:15;
@@ -18,3 +18,11 @@ form{
   border-radius:2px;
   padding: 30px 20px;
 }
+
+.fs-4{font-size:calc(1.275rem + .3vw)!important}
+.fs-4{margin-left:.5rem!important}
+
+.link-dark{color:#212529}.link-dark:focus,
+
+.me-2{margin-right:.5rem!important}
+
