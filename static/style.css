@@ -1,4 +1,20 @@
-.comment {
-    border-top:dotted 1px #ddd;
-    font-size:0.7em;
+.ball {
+  position: absolute;
+  border-radius: 100%;
+  overflow: hidden;
+  opacity: 0.7;
+  z-index: -10;
+}
+
+form{
+  background-color: #fff;
+  max-width:65%;
+  z-index:15;
+
+  margin:0 auto;
+  margin-top:5%;
+  margin-bottom:5%;
+  box-shadow:2px 5px 10px rgba(0,0,0,0.4);
+  border-radius:2px;
+  padding: 30px 20px;
 }

@@ -6,6 +6,10 @@ import requests
 
 url = "15.165.109.114"
 
+def home(request):
+    return render(request, "home.html")
+
+
 def listAPI(n, so, kw):
     URL = "http://"+url+":9200/public_metadata/_search?size="+str(n)
 
