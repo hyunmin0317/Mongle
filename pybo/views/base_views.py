@@ -11,7 +11,7 @@ import requests
 
 
 url = "52.78.99.246"
-index = "seoul_sample_2"
+index = "demo_data"
 
 def update():
     es = Elasticsearch(['http://3.34.219.4:9200/'])
