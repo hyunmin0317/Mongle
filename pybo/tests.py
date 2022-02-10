@@ -1,10 +1,18 @@
 import requests
 
-URL = "http://3.39.23.241:9200/public_metadata/_search?size=10000"
-data = requests.get(URL).json()['hits']['hits']
-list = []
-for a in data:
-    d = a['_source']
-    d['id'] = a['_id']
-    print(d)
+url = "15.165.109.114"
+
+def listAPI(n, so, kw):
+    URL = "http://"+url+":9200/seoul_sample/_search?size="+str(n)
+
+    if so == 'recent':
+        URL += '&sort=Date:desc'
+    else:
+        URL += '&sort=Category.keyword:asc'
+
+    if kw:
+        URL += ('&q='+kw)
+
+    data = requests.get(URL).json()['hits']['hits']
+    return data
 

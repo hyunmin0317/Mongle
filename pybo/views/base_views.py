@@ -5,6 +5,7 @@ from ..models import Question
 import requests
 
 url = "15.165.109.114"
+index = "public_metadata"
 
 def home(request):
     page = request.GET.get('page', '1')  # 페이지
@@ -16,7 +17,7 @@ def home(request):
 
 
 def listAPI(n, so, kw):
-    URL = "http://"+url+":9200/public_metadata/_search?size="+str(n)
+    URL = "http://" + url +":9200/" + index + "/_search?size=" + str(n)
 
     if so == 'recent':
         URL += '&sort=Date:desc'
@@ -35,12 +36,12 @@ def listAPI(n, so, kw):
     return list
 
 def detailAPI(id):
-    URL = "http://"+url+":9200/public_metadata/_doc/"+id
+    URL = "http://" + url +":9200/" + index + "/_doc/" + id
     data = requests.get(URL).json()['_source']
     return data
 
 def searchAPI(query):
-    URL = "http://" + url + ":9200/public_metadata/_search?size=1000&q="+query
+    URL = "http://" + url + ":9200/" + index + "/_search?size=1000&q=" + query
     data = requests.get(URL).json()['hits']['hits']
     list = []
     for d in data:
@@ -100,7 +101,7 @@ def covid19(request):
     return render(request, 'pybo/covid19.html', context)
 
 # pybo 목록 출력
-def index(request):
+def indexs(request):
     # 입력 파라미터
     page = request.GET.get('page', '1')  # 페이지
     kw = request.GET.get('kw', '')  # 검색어
