@@ -49,7 +49,7 @@ def date():
 
 def station_data():
     BASE_DIR = Path(__file__).resolve().parent.parent
-    f = open(str(BASE_DIR)+'/db/station_info.csv', 'r')
+    f = open(str(BASE_DIR)+'/db/station_info.csv', 'r', encoding='utf-8-sig')
     rdr = csv.reader(f)
 
     info = {}
