@@ -2,13 +2,16 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Count
 from ..models import Question
-import urllib.request
 from xml.etree.ElementTree import fromstring, ElementTree
 from elasticsearch import Elasticsearch, helpers
+import jamotools
+import urllib.request
+import json
 import requests
 
+
 url = "52.78.99.246"
-index = "seoul_sample"
+index = "seoul_sample_2"
 
 def update():
     es = Elasticsearch(['http://3.34.219.4:9200/'])
@@ -103,14 +106,32 @@ def home(request):
 
     return render(request, "home.html", context)
 
+def search_error(query):
+    url = "http://3.34.219.4:9200/seoul_sample/_search"
+    headers = {'Content-Type':'application/json'}
+
+    query = jamotools.split_syllables(query)
+    data = {
+        "suggest": {
+            "suggest": {
+                "text": query,
+                "term": {
+                    "field": "Title.spell"
+                }
+            }
+        }
+    }
+    response = requests.post(url, data=json.dumps(data), headers=headers)
+    word = response.json()['suggest']['suggest'][0]['options'][0]['text']
+    return jamotools.join_jamos(word)
 
 def listAPI(n, so, kw):
     URL = "http://" + url +":9200/" + index + "/_search?size=" + str(n)
 
-#  if so == 'recent':
-#        URL += '&sort=ModDate:desc'
-#    else:
-#        URL += '&sort=Category.keyword:asc'
+    if so == 'recent':
+        URL += '&sort=ModDate:desc'
+    else:
+        URL += '&sort=Category.keyword:asc'
 
     if kw:
         URL += ('&q='+kw)
@@ -121,7 +142,6 @@ def listAPI(n, so, kw):
         a = d['_source']
         a['id'] = d['_id']
         list.append(a)
-    list = list[1:]
     return list
 
 def detailAPI(id):
@@ -143,12 +163,18 @@ def list(request):
     page = request.GET.get('page', '1')  # 페이지
     kw = request.GET.get('kw', '')  # 검색어
     so = request.GET.get('so', 'recent')  # 정렬기준
+    reword = ''
 
     data_list = listAPI(10000, so, kw)
 
+    if not data_list:
+        reword = search_error(kw)
+        data_list = listAPI(10000, so, search_error(kw))
+
     paginator = Paginator(data_list, 5)
     page_obj = paginator.get_page(page)
-    context = {"data_list":page_obj, 'page': page, 'kw': kw, 'so': so}
+    length = format(len(data_list), ',')
+    context = {"data_list":page_obj, 'page': page, 'kw': kw, 'so': so, 'reword':reword, 'length':length}
 
     return render(request, 'pybo/list.html', context)
 

@@ -1,18 +1,25 @@
 import requests
+import json
+from jamo import h2j, j2hcj
+from unicode import join_jamos
 
-url = "15.165.109.114"
+def search_error(query):
+    url = "http://3.34.219.4:9200/seoul_sample/_search"
+    headers = {'Content-Type':'application/json'}
 
-def listAPI(n, so, kw):
-    URL = "http://"+url+":9200/seoul_sample/_search?size="+str(n)
+    query = j2hcj(h2j(query))
+    data = {
+        "suggest": {
+            "suggest": {
+                "text": query,
+                "term": {
+                    "field": "Title.spell"
+                }
+            }
+        }
+    }
+    response = requests.post(url, data=json.dumps(data), headers=headers)
+    word = response.json()['suggest']['suggest'][0]['options'][0]['text']
+    return join_jamos(word)
 
-    if so == 'recent':
-        URL += '&sort=Date:desc'
-    else:
-        URL += '&sort=Category.keyword:asc'
-
-    if kw:
-        URL += ('&q='+kw)
-
-    data = requests.get(URL).json()['hits']['hits']
-    return data
-
+print(search_error('시울'))

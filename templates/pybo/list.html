@@ -21,15 +21,25 @@
             </div>
         </div>
     </div>
-    <br>
 
-    {% if data_list %}
+    <div class="row justify-content-between my-3">
+        <div class="col-5">
+            {% if data_list %}
+            {% if reword != '' %}
+            <h6>{{reword}}로 검색한 결과입니다.</h6>
+            {% endif %}
+        </div>
+        <div>
+            <h6>전체 {{length}}건</h6>
+        </div>
+    </div>
+
     {% for data in data_list %}
 
     <p>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><a href="{% url 'pybo:list_detail' data.id %}">{{ data.Title }}</a><br></h5>
+        <h5 class="card-title"><b><a href="{% url 'pybo:list_detail' data.id %}" style="color: black">{{ data.Title }}</a></b></h5><br>
         <h6 class="card-subtitle mb-2 text-muted">{{ data.Category }}</h6>
         <p class="card-text">수정일자: {{ data.ModDate }}&emsp;&emsp;제공기관: {{ data.Copyright }}&emsp;&emsp;제공부서: {{ data.Department }}</p>
 
