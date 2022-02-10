@@ -5,7 +5,7 @@ from ..models import Question
 import requests
 
 url = "52.78.99.246"
-index = "seoul_sample_2"
+index = "seoul_sample"
 
 def home(request):
     page = request.GET.get('page', '1')  # 페이지
@@ -19,10 +19,10 @@ def home(request):
 def listAPI(n, so, kw):
     URL = "http://" + url +":9200/" + index + "/_search?size=" + str(n)
 
-    if so == 'recent':
-        URL += '&sort=ModDate:desc'
-    else:
-        URL += '&sort=Category.keyword:asc'
+#  if so == 'recent':
+#        URL += '&sort=ModDate:desc'
+#    else:
+#        URL += '&sort=Category.keyword:asc'
 
     if kw:
         URL += ('&q='+kw)
@@ -83,16 +83,13 @@ def category(request, category):
     return render(request, 'pybo/list.html', context)
 
 def seoul(request):
-    context = {"url":url}
-    return render(request, 'pybo/seoul.html', context)
+    return render(request, 'pybo/seoul.html')
 
 def subway(request):
-    context = {"url":url}
-    return render(request, 'pybo/subway.html', context)
+    return render(request, 'pybo/subway.html')
 
 def bike(request):
-    context = {"url":url}
-    return render(request, 'pybo/bike.html', context)
+    return render(request, 'pybo/bike.html')
 
 def covid19(request):
     URL = "http://"+url+":9200/covid19_logstash/_search?sort=date:desc"

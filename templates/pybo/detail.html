@@ -18,58 +18,46 @@
     <div class="row my-3">
         <div class="col-11"> <!-- 질문영역 -->
             <div class="card">
-                <div class="card-body">
+                <div class="card-body"><br>
+                    <div class="card-text"><h5><b>데이터 정보</b></h5></div>
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                            <th scope="row">공개일자</th>
+                            <td>{{ data.OpenDate }}</td>
+                            <th scope="row">최신수정일자</th>
+                            <td>{{ data.ModDate }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">갱신주기</th>
+                            <td>{{ data.Update }}</td>
+                            <th scope="row">분류</th>
+                            <td>{{ data.Category }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">제공기관</th>
+                            <td>{{ data.Agency }}</td>
+                            <th scope="row">제공부서</th>
+                            <td>{{ data.Department }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">담당자</th>
+                            <td>{{ data.Charge }}</td>
+                            <th scope="row">저작권자</th>
+                            <td>{{ data.Copyright }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">원본시스템</th>
+                            <td>{{ data.OriginalSys }}</td>
+                            <th scope="row">관련태그</th>
+                            <td>{{ data.Tags }}</td>
+                        </tr>
+                      </tbody>
+                    </table><br>
 
-<table class="table">
-  <tbody>
-    <tr>
-        <th scope="row">공개일자</th>
-        <td>{{ data.OpenDate }}</td>
-        <th scope="row">최신수정일자</th>
-        <td>{{ data.ModDate }}</td>
-    </tr>
-    <tr>
-        <th scope="row">갱신주기</th>
-        <td>{{ data.Update }}</td>
-        <th scope="row">분류</th>
-        <td>{{ data.Category }}</td>
-    </tr>
-    <tr>
-        <th scope="row">제공기관</th>
-        <td>{{ data.Agency }}</td>
-        <th scope="row">제공부서</th>
-        <td>{{ data.Department }}</td>
-    </tr>
-    <tr>
-        <th scope="row">담당자</th>
-        <td>{{ data.Charge }}</td>
-        <th scope="row">저작권자</th>
-        <td>{{ data.Copyright }}</td>
-    </tr>
-    <tr>
-        <th scope="row">관련태그</th>
-        <td colspan="2">{{ data.Tags }}</td>
-    </tr>
-    <tr>
-        <th scope="row">라이센스</th>
-        <td colspan="2">{{ data.License }}</td>
-    </tr>
-
-
-  </tbody>
-</table>
-
-                    <div class="card-text"><h5><b>카테고리</b></h5>{{ data.Category }}</div><br>
-                    <div class="card-text"><h5><b>관리부서</b></h5>{{ data.Department }}</div><br>
-                    <div class="card-text"><h5><b>수정</b></h5>{{ data.Date }}</div><br>
-                    <div class="card-text"><h5><b>업데이트 주기</b></h5>{{ data.Update }}</div><br>
-                    <div class="card-text"><h5><b>바로가기 링크</b></h5><a href={{data.URL}}>{{ data.URL }}</a></div><br>
-                    <div class="card-text"><h5><b>확장자</b></h5>{{ data.Format }}</div><br>
-                    <div class="card-text"><h5><b>매체유형</b></h5>{{ data.Texture }}</div><br>
-                    <div class="card-text"><h5><b>제공형태</b></h5>{{ data.DownloadLocation }}</div><br>
-                    <div class="card-text"><h5><b>이용허락범위</b></h5>{{ data.Copyright }}</div><br>
-                    <div class="card-text"><h5><b>가격</b></h5>{{ data.Price }}</div><br>
-                    <div class="card-text"><h5><b>설명</b></h5>{{ data.Column }}</div><br>
+                    <div class="card-text"><h5><b>데이터 설명</b></h5>{{ data.Explain }}</div><br><br>
+                    <div class="card-text"><h5><b>바로가기 링크</b></h5><a href={{data.DataUrl}}>{{ data.DataUrl }}</a></div><br><br>
+                    <div class="card-text"><h5><b>Open API</b></h5><a href={{data.URL}}>{{ data.APIUrl }}</a></div><br>
 
                     <div class="d-flex justify-content-end">
                         {% if question.modify_date %}
