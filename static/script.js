@@ -1,7 +1,7 @@
-    // Some random colors
+            // Some random colors
 const colors = ["#FED10A", "#7DE2D1", "#EF5098", "#17A8E0", "#93C83E", "#FED10A", "#7DE2D1", "#EF5098", "#17A8E0", "#93C83E","#FED10A", "#7DE2D1", "#EF5098", "#17A8E0", "#93C83E"];
 
-const numBalls = 12;
+const numBalls = 10;
 const balls = [];
 
 for (let i = 0; i < numBalls; i++) {
@@ -9,7 +9,7 @@ for (let i = 0; i < numBalls; i++) {
   ball.classList.add("ball");
   ball.style.background = colors[i];
   ball.style.left = `${Math.floor(Math.random() * 85)}vw`;
-  ball.style.top = `${Math.floor(Math.random() * 80)}vh`;
+  ball.style.top = `${Math.floor(Math.random() * 80+10)}vh`;
   ball.style.transform = `scale(${Math.random()})`;
   ball.style.width = `${Math.random()*20}em`;
   ball.style.height = ball.style.width;
