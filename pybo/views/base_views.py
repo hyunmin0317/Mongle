@@ -4,8 +4,8 @@ from django.db.models import Q, Count
 from ..models import Question
 import requests
 
-url = "15.165.109.114"
-index = "public_metadata"
+url = "52.78.99.246"
+index = "seoul_sample_2"
 
 def home(request):
     page = request.GET.get('page', '1')  # 페이지
@@ -20,7 +20,7 @@ def listAPI(n, so, kw):
     URL = "http://" + url +":9200/" + index + "/_search?size=" + str(n)
 
     if so == 'recent':
-        URL += '&sort=Date:desc'
+        URL += '&sort=ModDate:desc'
     else:
         URL += '&sort=Category.keyword:asc'
 
@@ -33,6 +33,7 @@ def listAPI(n, so, kw):
         a = d['_source']
         a['id'] = d['_id']
         list.append(a)
+    list = list[1:]
     return list
 
 def detailAPI(id):
@@ -57,7 +58,7 @@ def list(request):
 
     data_list = listAPI(10000, so, kw)
 
-    paginator = Paginator(data_list, 10)
+    paginator = Paginator(data_list, 5)
     page_obj = paginator.get_page(page)
     context = {"data_list":page_obj, 'page': page, 'kw': kw, 'so': so}
 

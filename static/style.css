@@ -6,8 +6,16 @@
   z-index: -10;
 }
 
+.main {
+      max-width:75%;
+      z-index:15;
+
+  margin:0 auto;
+  border-radius:2px;
+  padding: 30px 20px;
+}
+
 .form {
-  background-color: #fff;
   max-width:75%;
   z-index:15;
 
@@ -22,10 +30,6 @@
     margin:0 auto;
     border-radius:2px;
     padding: 30px 20px;
-    height:800px;
-}
-
-.home {
     height:800px;
 }
 

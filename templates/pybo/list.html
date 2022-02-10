@@ -2,7 +2,7 @@
 {% load pybo_filter %}
 {% block content %}
 
-<div class="home">
+<div>
     <div class="row justify-content-between my-3">
         <div class="col-2">
             <select class="form-control so">
@@ -21,44 +21,27 @@
             </div>
         </div>
     </div>
-        <table class="table">
-            <thead>
-            <tr class="text-center thead-dark">
-                <th>번호</th>
-                <th style="width:32%">제목</th>
-                <th>카테고리</th>
-                <th>수정일</th>
-                <th>주기</th>
-                <th>확장자</th>
-                <th>가격</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% if data_list %}
-            {% for data in data_list %}
-            <tr class="text-center">
-                <td>
-                    <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
-                    {{ data_list.paginator.count|sub:data_list.start_index|sub:forloop.counter0|add:1 }}
-                </td>
+    <br>
 
-                <td class="text-left">
-                    <a href="{% url 'pybo:list_detail' data.id %}">{{ data.Title }}</a>
-                </td>
-                <td>{{ data.Category }}</td>
-                <td>{{ data.Date }}</td>
-                <td>{{ data.Update }}</td>
-                <td>{{ data.Format }}</td>
-                <td>{{ data.Price }}</td>
-            </tr>
-            {% endfor %}
-            {% else %}
-            <tr>
-                <td colspan="3">검색결과가 없습니다.</td>
-            </tr>
-            {% endif %}
-            </tbody>
-        </table>
+    {% if data_list %}
+    {% for data in data_list %}
+
+    <p>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'pybo:list_detail' data.id %}">{{ data.Title }}</a><br></h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ data.Category }}</h6>
+        <p class="card-text">수정일자: {{ data.ModDate }}&emsp;&emsp;제공기관: {{ data.Copyright }}&emsp;&emsp;제공부서: {{ data.Department }}</p>
+
+      </div>
+    </div>
+    </p>
+
+    {% endfor %}
+    {% else %}
+    <td>검색결과가 없습니다.</td>
+    {% endif %}
+
         <!--  페이징처리 시작  -->
         <ul class="pagination justify-content-center">
             <!--  이전페이지  -->

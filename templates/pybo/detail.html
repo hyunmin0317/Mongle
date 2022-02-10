@@ -13,10 +13,52 @@
     {% endif %}
     <h2 class="border-bottom py-2">{{ data.Title }}</h2>
 
+
+
     <div class="row my-3">
         <div class="col-11"> <!-- 질문영역 -->
             <div class="card">
                 <div class="card-body">
+
+<table class="table">
+  <tbody>
+    <tr>
+        <th scope="row">공개일자</th>
+        <td>{{ data.OpenDate }}</td>
+        <th scope="row">최신수정일자</th>
+        <td>{{ data.ModDate }}</td>
+    </tr>
+    <tr>
+        <th scope="row">갱신주기</th>
+        <td>{{ data.Update }}</td>
+        <th scope="row">분류</th>
+        <td>{{ data.Category }}</td>
+    </tr>
+    <tr>
+        <th scope="row">제공기관</th>
+        <td>{{ data.Agency }}</td>
+        <th scope="row">제공부서</th>
+        <td>{{ data.Department }}</td>
+    </tr>
+    <tr>
+        <th scope="row">담당자</th>
+        <td>{{ data.Charge }}</td>
+        <th scope="row">저작권자</th>
+        <td>{{ data.Copyright }}</td>
+    </tr>
+    <tr>
+        <th scope="row">관련태그</th>
+        <td colspan="2">{{ data.Tags }}</td>
+    </tr>
+    <tr>
+        <th scope="row">라이센스</th>
+        <td colspan="2">{{ data.License }}</td>
+    </tr>
+
+
+  </tbody>
+</table>
+
                     <div class="card-text"><h5><b>카테고리</b></h5>{{ data.Category }}</div><br>
                     <div class="card-text"><h5><b>관리부서</b></h5>{{ data.Department }}</div><br>
                     <div class="card-text"><h5><b>수정</b></h5>{{ data.Date }}</div><br>
