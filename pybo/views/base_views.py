@@ -278,7 +278,8 @@ def seoul(request):
     URL = "http://" + url + ":9200/covid19_logstash/_search?sort=date:desc"
     data = requests.get(URL).json()['hits']['hits'][0]
     date1 = data['_source']['date']
-    date2 = date().strftime("%Y.%m.%d.%H")
+    date2 = date().strftime("%Y.%m.%d")
+    date2 += ".00"
     context = {"date1": date1, "date2": date2}
     return render(request, 'pybo/seoul.html', context)
 
