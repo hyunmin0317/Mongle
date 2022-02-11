@@ -2,12 +2,11 @@
 
     {% load static %}
 
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-4 border-bottom">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-4 border-bottom" width="100%">
         <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <img src="{% static 'logo.png' %}" width="110"/>
         </a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-left: 15%;">
           <li><a href="{% url 'pybo:list' %}" class="nav-link px-2 link-dark">Data</a></li>
           <li><a href="{% url 'pybo:covid19' %}" class="nav-link px-2 link-dark">Covid19</a></li>
         <li><a href="{% url 'pybo:seoul' %}" class="nav-link px-2 link-dark">Seoul</a></li>
@@ -15,8 +14,8 @@
         <li><a href="{% url 'pybo:bike' %}" class="nav-link px-2 link-dark">Bike</a></li>
       </ul>
 
-      <div class="col-md-3 text-end">
-          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <div style="float:right;" class="col-md-3 text-end">
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"  style="margin-left: 40%;">
               <li><a class="nav-link px-2 link-dark" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wy.jung@mongta.co.kr">Contact</a></li>
           </ul>
       </div>
