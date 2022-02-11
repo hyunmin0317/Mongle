@@ -22,11 +22,15 @@
         </div>
     </div>
 
+    {% if data_list %}
     <div class="row justify-content-between my-3">
         <div class="col-5">
-            {% if data_list %}
             {% if reword != '' %}
-            <h6><b>{{reword}}</b>로 검색한 결과입니다.</h6>
+                {% if reword == 'category' %}
+                <h6><b>카테고리: {{cate}}</b></h6>
+                {% else %}
+                <h6><b>{{reword}}</b>로 검색한 결과입니다.</h6>
+                {% endif %}
             {% endif %}
         </div>
         <div>

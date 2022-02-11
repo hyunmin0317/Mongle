@@ -199,8 +199,13 @@ def search_error(query):
         }
     }
     response = requests.post(url, data=json.dumps(data), headers=headers)
-    word = response.json()['suggest']['suggest'][0]['options'][0]['text']
-    return jamotools.join_jamos(word)
+    response_json = response.json()['suggest']['suggest'][0]['options']
+    reword = query
+    if len(response_json) != 0:
+        print(response_json)
+        word = response_json[0]['text']
+        reword = jamotools.join_jamos(word)
+    return reword
 
 def listAPI(n, so, kw):
     URL = "http://" + url +":9200/" + index + "/_search?size=" + str(n)
@@ -208,7 +213,7 @@ def listAPI(n, so, kw):
     if so == 'recent':
         URL += '&sort=ModDate:desc'
     else:
-        URL += '&sort=Category.keyword:asc'
+        URL += '&sort=Category:asc'
 
     if kw:
         URL += ('&q='+kw)
@@ -267,9 +272,11 @@ def category(request, category):
 
     data_list = listAPI(10000, so, kw)
 
-    paginator = Paginator(data_list, 10)
+    paginator = Paginator(data_list, 5)
     page_obj = paginator.get_page(page)
-    context = {"data_list": page_obj, 'page': page, 'kw': kw, 'so': so}
+    length = format(len(data_list), ',')
+    reword = 'category'
+    context = {"data_list": page_obj, 'page': page, 'so': so, 'reword':reword, 'length':length, 'cate':category}
 
     return render(request, 'pybo/list.html', context)
 
