@@ -10,6 +10,7 @@ urlpatterns = [
     path('', base_views.home, name='home'),
     path('mongta/', include('pybo.urls')),
     path('common/', include('common.urls')),
+
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
