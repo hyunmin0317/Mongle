@@ -1,5 +1,9 @@
 from django.contrib import admin
+from django.template.defaulttags import url
 from django.urls import path, include
+from django.views.static import serve
+
+from config import settings
 from pybo.views import base_views
 
 urlpatterns = [
@@ -7,4 +11,6 @@ urlpatterns = [
     path('', base_views.home, name='home'),
     path('mongta/', include('pybo.urls')),
     path('common/', include('common.urls')),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
