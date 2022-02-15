@@ -47,7 +47,7 @@ def date():
 
 def station_data():
     BASE_DIR = Path(__file__).resolve().parent.parent
-    f = open(str(BASE_DIR)+'\db\information.csv', 'r', encoding='cp949')
+    f = open(str(BASE_DIR)+'/db/information.csv', 'r', encoding='cp949')
     rdr = csv.reader(f)
 
     info = {}
@@ -68,7 +68,7 @@ def station_data():
 def subway_data():
     BASE_DIR = Path(__file__).resolve().parent.parent
 
-    f = open(str(BASE_DIR)+'\db\subway.csv', 'r', encoding='utf-8-sig')
+    f = open(str(BASE_DIR)+'/db/subway.csv', 'r', encoding='utf-8-sig')
     rdr = csv.reader(f)
 
     data = []
