@@ -1,4 +1,7 @@
-from django.urls import path
+from django.urls import path, re_path
+from django.views.static import serve
+
+from config import settings
 from .views import base_views, question_views, answer_views, comment_views, vote_views, db_views
 
 app_name = 'pybo'
@@ -44,4 +47,7 @@ urlpatterns = [
     path('seoul/', base_views.seoul, name='seoul'),
     path('covid19/', base_views.covid19, name='covid19'),
     path('bike/', base_views.bike, name='bike'),
+
+    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
