@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pybo.apps.MongtaConfig',
-    'common.apps.CommonConfig',
 ]
 
 MIDDLEWARE = [
