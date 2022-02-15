@@ -1,5 +1,8 @@
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+
+from config import settings
 from pybo.views import base_views
 
 urlpatterns = [
@@ -8,3 +11,5 @@ urlpatterns = [
     path('mongta/', include('pybo.urls')),
     path('common/', include('common.urls')),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
