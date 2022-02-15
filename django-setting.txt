@@ -1,0 +1,12 @@
+# install
+sudo yum install git
+sudo yum install python3
+sudo pip3 install django
+sudo pip3 install Django==2.1.*
+sudo pip3 install elasticsearch
+sudo pip3 install jamotools
+sudo pip3 install requests
+
+# runserver
+python3 manage.py migrate
+nohup python3 manage.py runserver 0:8000 &

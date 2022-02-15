@@ -1,0 +1,64 @@
+.ball {
+  position: absolute;
+  border-radius: 100%;
+  overflow: hidden;
+  opacity: 0.7;
+  z-index: -10;
+}
+
+.main {
+      max-width:75%;
+      z-index:15;
+
+  margin:0 auto;
+  border-radius:2px;
+  padding: 30px 20px;
+}
+
+.form {
+  max-width:75%;
+  z-index:15;
+
+  margin:0 auto;
+  border-radius:2px;
+  padding: 30px 20px;
+}
+
+.content {
+    max-width:75%;
+    z-index:15;
+    margin:0 auto;
+    border-radius:2px;
+    padding: 30px 20px;
+    height:800px;
+}
+
+.main {
+    background-color: #000;
+    height:300px;
+}
+
+.fs{font-size:calc(100rem + .3vw)!important}
+.fs{important}
+
+.fs-1{font-size:calc(3rem + .3vw)!important}
+.fs-1{margin-left:.5rem!important}
+
+.fs-4{font-size:calc(1.275rem + .3vw)!important}
+.fs-4{margin-left:.5rem!important}
+
+.link-dark{color:#212529}.link-dark:focus,
+
+.me-2{margin-right:.5rem!important}
+
+
+.btn-outline{color:#007bff;border-color:#007bff}
+.btn-outline:hover{color:#fff;background-color:#007bff;border-color:#007bff}
+.btn-outline.focus,.btn-outline:focus{box-shadow:0 0 0 .2rem rgba(0,123,255,.5)}
+.btn-outline.disabled,.btn-outline:disabled{color:#007bff;background-color:transparent}
+.btn-outline:not(:disabled):not(.disabled).active,.btn-outline:not(:disabled):not(.disabled):active,.show>
+.btn-outline.dropdown-toggle{color:#fff;background-color:#007bff;border-color:#007bff}
+.btn-outline:not(:disabled):not(.disabled).active:focus,.btn-outline:not(:disabled):not(.disabled):active:focus,.show>
+.btn-outline.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(0,123,255,.5)}
+
+.btn-outline-dark2{color:#343a40;border-color:#343a40}.btn-outline-dark2:hover{color:#fff;background-color:#343a40;border-color:#343a40}.btn-outline-dark2.focus,.btn-outline-dark2:focus{box-shadow:0 0 0 .2rem rgba(52,58,64,.5)}.btn-outline-dark2.disabled,.btn-outline-dark2:disabled{color:#343a40;background-color:transparent}.btn-outline-dark2:not(:disabled):not(.disabled).active,.btn-outline-dark2:not(:disabled):not(.disabled):active,.show>.btn-outline-dark2.dropdown-toggle{color:#fff;background-color:#343a40;border-color:#343a40}.btn-outline-dark2:not(:disabled):not(.disabled).active:focus,.btn-outline-dark2:not(:disabled):not(.disabled):active:focus,.show>.btn-outline-dark2.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(52,58,64,.5)}
