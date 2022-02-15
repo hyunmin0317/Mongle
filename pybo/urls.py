@@ -47,7 +47,4 @@ urlpatterns = [
     path('seoul/', base_views.seoul, name='seoul'),
     path('covid19/', base_views.covid19, name='covid19'),
     path('bike/', base_views.bike, name='bike'),
-
-    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
-    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
