@@ -11,5 +11,3 @@ urlpatterns = [
     path('mongta/', include('pybo.urls')),
     path('common/', include('common.urls')),
 ]
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
