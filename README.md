@@ -6,7 +6,21 @@
 
 ## :globe_with_meridians: [Mongle](http://15.165.211.109:8000/)
 
+![website.png](https://github.com/hyunmin0317/Project-Backend/blob/master/static/website.png?raw=true)
 
+<br>
+
+## :hammer_and_wrench: Tech Stack
+
+* ### 프론트엔드: HTML, CSS, JavaScript
+
+* ### 백엔드: Django
+
+* ### 데이터 분석: Elastic Stack
+
+* ### 데이터 전처리: Python
+
+<br>
 
 ## :computer: 팀원
 
