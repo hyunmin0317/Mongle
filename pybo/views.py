@@ -10,6 +10,7 @@ import requests
 from pathlib import Path
 import json
 import urllib.request
+from pytrends.request import TrendReq
 
 def naver_API(date):
     last = date - timedelta(365)
@@ -62,6 +63,41 @@ def naver_NFT():
 
     res = helpers.bulk(es, docs)
     return list[-1]['period']
+
+def google_API():
+    keywords = ["nft"]
+    pytrends = TrendReq(hl='ko', tz=360)
+
+    pytrends.build_payload(keywords, cat=0, timeframe='today 5-y')
+    getdatainfo = pytrends.interest_over_time()
+
+    list = []
+    date_list = getdatainfo.index.to_list()
+    value_list = getdatainfo['nft'].to_list()
+
+    for i in range(len(date_list)-1):
+        dic = {"date":date_list[i].strftime("%Y-%m-%d"), "ratio":value_list[i]}
+        list.append(dic)
+    return list
+
+def google_NFT():
+    es = Elasticsearch(['http://3.34.219.4:9200/'])
+    docs = []
+    list = google_API()
+
+    for data in list:
+        date = data['date']
+        doc = {
+            "_index": "nft_search",
+            "_id": "google_"+date,
+            "_source": {
+                "date": date,
+                "google_ratio": data['ratio']
+            }
+        }
+        docs.append(doc)
+    res = helpers.bulk(es, docs)
+    return list[-1]['date']
 
 url = "52.78.99.246"
 index = "demo_data"
@@ -357,7 +393,8 @@ def covid19(request):
 
 def nft(request):
     date1 = naver_NFT()
-    context = {"date1":date1}
+    date2 = google_NFT()
+    context = {"date1":date1, "date2":date2}
     return render(request, 'pybo/nft.html', context)
 
 def page_not_found(request, exception):
