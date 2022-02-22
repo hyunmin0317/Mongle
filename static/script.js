@@ -1,4 +1,4 @@
-            // Some random colors
+// Some random colors
 const colors = ["#FED10A", "#7DE2D1", "#EF5098", "#17A8E0", "#93C83E", "#FED10A", "#7DE2D1", "#EF5098", "#17A8E0", "#93C83E","#FED10A", "#7DE2D1", "#EF5098", "#17A8E0", "#93C83E"];
 
 const numBalls = 10;

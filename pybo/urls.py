@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 from django.views.static import serve
-from pybo.views import list, list_detail, category, subway, seoul, covid19, bike
+from pybo.views import list, list_detail, category, subway, seoul, covid19, bike, nft
 
 app_name = 'pybo'
 
@@ -15,4 +15,5 @@ urlpatterns = [
     path('seoul/', seoul, name='seoul'),
     path('covid19/', covid19, name='covid19'),
     path('bike/', bike, name='bike'),
+    path('nft/', nft, name='nft'),
 ]
