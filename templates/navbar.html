@@ -1,44 +1,23 @@
 <!-- 네비게이션바 -->
-<<<<<<< HEAD
-
-    {% load static %}
-
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-4 border-bottom" width="100%">
-        <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <img src="{% static 'logo.png' %}" width="110"/>
-        </a>
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-left: 15%;">
-          <b><li><a href="{% url 'pybo:list' %}" class="nav-link px-2 link-dark">Data</a></li></b>
-          <b><li><a href="{% url 'pybo:covid19' %}" class="nav-link px-2 link-dark">Covid19</a></li></b>
-          <b><li><a href="{% url 'pybo:seoul' %}" class="nav-link px-2 link-dark">Seoul</a></li></b>
-          <b><li><a href="{% url 'pybo:subway' %}" class="nav-link px-2 link-dark">Subway</a></li></b>
-          <b><li><a href="{% url 'pybo:bike' %}" class="nav-link px-2 link-dark">Bike</a></li></b>
-          <b><li><a href="{% url 'pybo:nft' %}" class="nav-link px-2 link-dark">NFT</a></li></b>
-      </ul>
-
-      <div style="float:right;" class="col-md-3 text-end">
-          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"  style="margin-left: 40%;">
-              <li><a class="nav-link px-2 link-dark" href="https://github.com/hyunmin0317/Mongle">Github</a></li>
-              <li><a class="nav-link px-2 link-dark" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wy.jung@mongta.co.kr">Contact</a></li>
-          </ul>
-      </div>
-    </header>
-=======
 {% load static %}
+
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-4 border-bottom" width="100%">
     <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="{% static 'logo.png' %}" width="110"/>
     </a>
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="margin-left: 15%;">
         <b><li><a href="{% url 'pybo:list' %}" class="nav-link px-2 link-dark">Data</a></li></b>
         <b><li><a href="{% url 'pybo:covid19' %}" class="nav-link px-2 link-dark">Covid19</a></li></b>
         <b><li><a href="{% url 'pybo:seoul' %}" class="nav-link px-2 link-dark">Seoul</a></li></b>
         <b><li><a href="{% url 'pybo:subway' %}" class="nav-link px-2 link-dark">Subway</a></li></b>
         <b><li><a href="{% url 'pybo:bike' %}" class="nav-link px-2 link-dark">Bike</a></li></b>
+        <b><li><a href="{% url 'pybo:nft' %}" class="nav-link px-2 link-dark">NFT</a></li></b>
     </ul>
-    <ul class="nav nav-pills">
-        <li class="nav-item"><a href="https://github.com/hyunmin0317/Mongle" class="nav-link px-2 link-dark">Github</a></li>
-        <li class="nav-item"><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wy.jung@mongta.co.kr" class="nav-link px-2 link-dark">Contact</a></li>
-    </ul>
+
+    <div style="float:right;" class="col-md-3 text-end">
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"  style="margin-left: 40%;">
+            <li><a class="nav-link px-2 link-dark" href="https://github.com/hyunmin0317/Mongle">Github</a></li>
+            <li><a class="nav-link px-2 link-dark" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=wy.jung@mongta.co.kr">Contact</a></li>
+        </ul>
+    </div>
 </header>
->>>>>>> a3de37714724ea7507c75f6f3c1a889b8e7e7105
