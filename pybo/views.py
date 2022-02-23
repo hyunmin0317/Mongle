@@ -1,5 +1,5 @@
 import csv
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from xml.etree.ElementTree import fromstring, ElementTree
@@ -11,9 +11,11 @@ from pathlib import Path
 import json
 import urllib.request
 from pytrends.request import TrendReq
+from dateutil.relativedelta import relativedelta
 
 def naver_API(date):
-    last = date - timedelta(365)
+    delta = relativedelta(years=5)
+    last = date - delta
     today = date.strftime("%Y-%m-%d")
     last_year = last.strftime("%Y-%m-%d")
 
