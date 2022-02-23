@@ -52,7 +52,7 @@ def naver_NFT():
     for data in list:
         date = data['period']
         doc = {
-            "_index": "naver_nft",
+            "_index": "nft_search",
             "_id": date,
              "_source": {
                  "date": date,
