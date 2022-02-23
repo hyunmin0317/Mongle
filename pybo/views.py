@@ -53,10 +53,10 @@ def naver_NFT():
         date = data['period']
         doc = {
             "_index": "nft_search",
-            "_id": date,
+            "_id": "naver_"+date,
              "_source": {
                  "date": date,
-                 "ratio": data['ratio']
+                 "naver_ratio": data['ratio']
              }
         }
         docs.append(doc)
